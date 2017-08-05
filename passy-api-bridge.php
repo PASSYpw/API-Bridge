@@ -1,6 +1,6 @@
 <?php
 
-
+$target_address = "https://app.passy.pw/action.php";
 $content_type = $_SERVER["CONTENT_TYPE"];
 $method = $_SERVER['REQUEST_METHOD'];
 $content = null;
@@ -13,10 +13,10 @@ if($method == "OPTIONS") {
     header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
     die();
 }
+if(isset($_POST["target"])) $target_address = $_POST["target"];
 
 
-
-$passy_request = curl_init("https://app.passy.pw/action.php");
+$passy_request = curl_init($target_address);
 curl_setopt($passy_request, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($passy_request, CURLOPT_VERBOSE, 1);
 curl_setopt($passy_request, CURLOPT_HEADER, 1);

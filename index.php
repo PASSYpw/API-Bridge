@@ -16,7 +16,6 @@ curl_setopt($passy_request, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($passy_request, CURLOPT_VERBOSE, 1);
 curl_setopt($passy_request, CURLOPT_HEADER, 1);
 curl_setopt($ch,CURLOPT_USERAGENT, "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
-
 $access_cookie = "";
 if($method == "POST") {
     $request_args = array();
@@ -47,13 +46,11 @@ foreach (explode("\n", $header) as $item) {
         $x = true;
         continue;
     }
-##PHPSESSID
   if(strpos($item, "SCRUMPLEX") !== false) {
         array_push($tokens, substr(explode(";", $item)[0], 12));
   } else if(strpos($item, "PHPSESSID") !== false) {
 	        array_push($tokens, substr(explode(";", $item)[0], 12));
-
-}
+	}
 }
 header("Access-Control-Allow-Origin: *");
 header("Content-type: application/json");

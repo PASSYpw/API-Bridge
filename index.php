@@ -46,7 +46,7 @@ foreach (explode("\n", $header) as $item) {
         $x = true;
         continue;
     }
-  if(strpos($item, "SCRUMPLEX") !== false) {
+  if(strpos($item, "SESSION_TOKEN") !== false) {
         array_push($tokens, substr(explode(";", $item)[0], 12));
   } else if(strpos($item, "PHPSESSID") !== false) {
 	        array_push($tokens, substr(explode(";", $item)[0], 12));
